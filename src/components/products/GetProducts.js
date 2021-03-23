@@ -15,7 +15,7 @@ const GetProducts = () => {
         <div>
             <h2> Products List </h2>
             {data && data.map((product) => (
-                <div key={product.id}>
+                <div key={product._id}>
                     <h4>Title : {product.title}</h4>
                     <p>price : {product.price}</p>
                     {product.description && <p>description : {product.description}</p>}
