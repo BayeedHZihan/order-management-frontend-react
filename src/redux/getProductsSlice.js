@@ -5,7 +5,7 @@ export const getProducts = createAsyncThunk(
     'products/getProducts', 
     async() => {
         const res = await axios.get('http://localhost:5000/products/view-products', {withCredentials: true});
-        return res;
+        return res.data;
     }
 )
 

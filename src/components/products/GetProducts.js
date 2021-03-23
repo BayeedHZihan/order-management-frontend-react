@@ -4,8 +4,8 @@ import {getProducts} from '../../redux/getProductsSlice';
 
 const GetProducts = () => {
     const dispatch = useDispatch();
-    const {data} = useSelector(state => state.products.list);
-    console.log("the products are :", data);
+    const data = useSelector(state => state.products.list);
+    //console.log("the products are :", data);
 
     useEffect(() => {
         dispatch(getProducts());
