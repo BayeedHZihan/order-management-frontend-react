@@ -1,38 +1,25 @@
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import { Redirect } from 'react-router';
 import {getUsers} from '../../redux/getUsersSlice';
+import {useHistory} from 'react-router-dom';
 
 const Users = () => {
-    // const [array, setArray] = useState([
-    //     {
-    //         id: 1,
-    //         name: "jack",
-    //         email: "jack@jack.com",
-    //         password: "jack", 
-    //         role: "user"
-    //     },
-    //     {
-    //         id: 2,
-    //         name: "mormon",
-    //         email: "mormon@mormon.com",
-    //         password: "mormon", 
-    //         role: "admin"
-    //     },
-    //     {
-    //         id: 3,
-    //         name: "hazle",
-    //         email: "hazle@hazle.com",
-    //         password: "hazle", 
-    //         role: "super admin"
-    //     }
-    // ]);
-
     const dispatch = useDispatch();
     const users = useSelector(state => state.users.list);
 
     useEffect(() => {
         dispatch(getUsers());
     },[dispatch]);
+
+    let history = useHistory();
+
+    const handleUpdate = userId => {
+        history.push({
+            pathname: '/update-user',
+            state: { id: userId }
+        });
+    }
 
     return (  
         <div className="users">
@@ -43,7 +30,7 @@ const Users = () => {
                     <p>email : {ele.email}</p>
                     <p>password : {ele.password}</p>
                     <p>role : {ele.role}</p>
-                    <button>update</button>
+                    <button onClick={() => handleUpdate(ele._id)}>update</button>
                     <button>delete</button>
                 </div>
             ))}

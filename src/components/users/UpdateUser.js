@@ -1,4 +1,13 @@
-const UpdateUser = () => {
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+const UpdateUser = (props) => {
+    const location = useLocation();
+
+    useEffect(() => {
+       console.log(location.state.id); // result: users id to update
+    }, [location]);
+
     return (  
         <div>
             <h2> Update User </h2>
