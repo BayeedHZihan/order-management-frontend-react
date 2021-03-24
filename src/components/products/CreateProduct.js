@@ -18,6 +18,11 @@ const CreateProduct = () => {
         axios.post('http://localhost:5000/products', userToCreate)
     }
 
+    const handleGen = e => {
+        e.preventDefault();
+        axios.get('http://localhost:5000/generate-products', {withCredentials: true})
+    }
+
     return (  
         <div>
             <h2> Create Product </h2>
@@ -35,7 +40,7 @@ const CreateProduct = () => {
                 <input type="submit" value="Submit" onClick={handleCreate}/>
             </form>
             <h3> Or... </h3>
-            <button> Generate Product </button>
+            <button onClick={handleGen}> Generate Product </button>
         </div>
     );
 }
