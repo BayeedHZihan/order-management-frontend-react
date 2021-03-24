@@ -27,7 +27,7 @@ const Home = () => {
             {
                 
                 pages.map((page) => (
-                    <li>
+                    <li style={{marginTop: "20px"}}>
                         <Link to={`${page}`}>{page.substring(1)}</Link>
                     </li>  
                 ))
