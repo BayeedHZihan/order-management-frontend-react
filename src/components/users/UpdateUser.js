@@ -12,7 +12,6 @@ const UpdateUser = (props) => {
     const [role, setRole] = useState("");
 
     useEffect(() => {
-       console.log(location.state.id); // result: users id to update
        setUserId(location.state.id);
     }, [location]);
 
@@ -23,7 +22,6 @@ const UpdateUser = (props) => {
         if (email) userUpdate.email = email;
         if (password) userUpdate.password = password;
         if (role) userUpdate.role = role;
-        console.log(userUpdate)
         if (userId) {
             axios.patch(`http://localhost:5000/users/${userId}`, userUpdate)
         }
