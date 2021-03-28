@@ -5,7 +5,7 @@ import '../styles/AppNavbar.css';
 
 const AppNavbar = () => {
     return (  
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="dark" expand="lg">
             <Navbar.Brand><Link to="/" className="navTitle">Order Management</Link></Navbar.Brand>
         </Navbar>
     );

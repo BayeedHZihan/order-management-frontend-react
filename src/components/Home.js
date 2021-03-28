@@ -7,24 +7,26 @@ const Home = () => {
     // if allstate || rightState then ouput route in the list
 
     const [pages, setPages] = useState([
-        '/create-user',
-        '/update-user',
-        '/get-users',
-        '/create-product',
-        '/get-products',
-        '/get-orders',
-        '/place-order',
-        '/order-summary',
-        '/update-status'
+        {url: '/create-user', id: 0},
+        {url: '/get-users', id: 2}
     ]);
-    //const [role, setRole] = useState(null);
+
+    const [userPages, setUserPages] = useState([
+        {url: '/get-products', id: 3},
+        {url: '/place-order', id: 4}
+    ]);
+    const [adminPages, setAdminPages] = useState([
+        {url: '/get-orders', id: 5}
+    ]);
+    const [superPages, setSuperPages] = useState([
+        {url: '/create-product', id: 7},
+        {url: '/order-summary', id: 8}
+    ]);
+    
 
     const role = useSelector(state => state.isLoggedIn.userRole);
-    console.log(role);
+    //console.log(role);
 
-    // useEffect(() => {
-        
-    // },[]);
 
     return (  
         <div> 
@@ -33,12 +35,28 @@ const Home = () => {
             {
                 
                 pages.map((page) => (
-                    <li style={{marginTop: "20px"}}>
-                        <Link to={`${page}`}>{page.substring(1)}</Link>
+                    <li style={{marginTop: "20px"}} key={page.id}>
+                        <Link to={`${page.url}`}>{page.url.substring(1)}</Link>
                     </li>  
                 ))
                 
             }
+
+            {role==='user' && userPages.map((page) => (
+                <li style={{marginTop: "20px"}} key={page.id}>
+                    <Link to={`${page.url}`}>{page.url.substring(1)}</Link>
+                </li>  
+            ))}
+            {role==='admin' && adminPages.map((page) => (
+                <li style={{marginTop: "20px"}} key={page.id}>
+                    <Link to={`${page.url}`}>{page.url.substring(1)}</Link>
+                </li>  
+            ))}
+            {role==='super admin' && superPages.map((page) => (
+                <li style={{marginTop: "20px"}} key={page.id}>
+                    <Link to={`${page.url}`}>{page.url.substring(1)}</Link>
+                </li>  
+            ))}
             </ul>
 
         </div>

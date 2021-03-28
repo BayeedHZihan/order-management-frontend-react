@@ -40,9 +40,8 @@ const Login = () => {
 
                 for (let i=0; i<users.length; i++){
                     if (users[i]._id === decoded.id) {
-                        if (users[i]?.role){
-                            setRole(users[i].role);
-                        }
+                        
+                        setRole(users[i].role);
                         //console.log("this is it", users[i].role)
                         break;
                     }
