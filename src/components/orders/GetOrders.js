@@ -2,6 +2,7 @@ import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getOrders} from '../../redux/getOrdersSlice';
 import {useHistory} from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const GetOrders = () => {
     const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const GetOrders = () => {
                         <p>items : {order.items}</p>
                         {order.description && <p>description: {order.description}</p>}
                         <p>status : {order.status}</p>
-                        <button onClick={() => handleClick(order._id)}> update status </button>
+                        <Button onClick={() => handleClick(order._id)} variant="info" size="sm"> update status </Button>
                     </div>
                 ))
             }

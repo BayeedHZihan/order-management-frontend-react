@@ -2,8 +2,10 @@ import {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 const Home = () => {
+    // different states for different users
+    // if allstate || rightState then ouput route in the list
+     
     const [pages, setPages] = useState([
-        '/login',
         '/create-user',
         '/update-user',
         '/get-users',

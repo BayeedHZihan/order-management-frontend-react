@@ -1,0 +1,7 @@
+.navTitle{
+    color: purple;
+}
+
+.navTitle:hover{
+    text-decoration: none;
+}
