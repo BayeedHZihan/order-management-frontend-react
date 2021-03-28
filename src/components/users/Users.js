@@ -29,7 +29,6 @@ const Users = () => {
         try{
             axios.delete(`http://localhost:5000/users/${userId}`)
                 .then(() => {
-                    //window.location.reload(false)      <- this works but have to re login bc the page reloads
                     history.push("/");
                 })
         }

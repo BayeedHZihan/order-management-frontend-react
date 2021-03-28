@@ -1,10 +1,11 @@
 import {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Home = () => {
     // different states for different users
     // if allstate || rightState then ouput route in the list
-     
+
     const [pages, setPages] = useState([
         '/create-user',
         '/update-user',
@@ -16,11 +17,14 @@ const Home = () => {
         '/order-summary',
         '/update-status'
     ]);
-    const [role, setRole] = useState(null);
+    //const [role, setRole] = useState(null);
 
-    useEffect(() => {
-        //setRole to current user/admin/s.a
-    },[]);
+    const role = useSelector(state => state.isLoggedIn.userRole);
+    console.log(role);
+
+    // useEffect(() => {
+        
+    // },[]);
 
     return (  
         <div> 
