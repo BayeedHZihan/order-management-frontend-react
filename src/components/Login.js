@@ -32,22 +32,14 @@ const Login = () => {
             const loginData = {email, password};
             const res = await axios.post('/login', loginData);
             if (res) {
-                //console.log(res.data.token)
                 const decoded = jwt_decode(res.data.token);
-                // console.log(decoded)
-                
-                // console.log(users);
 
                 for (let i=0; i<users.length; i++){
                     if (users[i]._id === decoded.id) {
-                        
                         setRole(users[i].role);
-                        //console.log("this is it", users[i].role)
                         break;
                     }
                 }
-
-                //console.log(ref.current)
 
                 dispatch(login(ref.current));
                 history.push("/");
