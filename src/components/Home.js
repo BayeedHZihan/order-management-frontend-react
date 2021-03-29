@@ -2,6 +2,10 @@ import {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 
+import ListGroup from 'react-bootstrap/ListGroup';
+import Container from 'react-bootstrap/Container';
+import '../styles/Home.css';
+
 const Home = () => {
     // different states for different users
     // if allstate || rightState then ouput route in the list
@@ -29,37 +33,39 @@ const Home = () => {
 
 
     return (  
-        <div> 
-            <h2>List of pages you can access</h2> 
-            <ul>
-            {
-                
-                pages.map((page) => (
-                    <li style={{marginTop: "20px"}} key={page.id}>
+        <Container>
+            <div className="homeTop"> 
+                <h2>List of pages you can access</h2> 
+                <ListGroup  variant="flush" className="linkTexts">
+                {
+                    
+                    pages.map((page) => (
+                        <ListGroup.Item style={{marginTop: "20px"}} key={page.id}>
+                            <Link to={`${page.url}`}>{page.url.substring(1)}</Link>
+                        </ListGroup.Item>  
+                    ))
+                    
+                }
+
+                {role==='user' && userPages.map((page) => (
+                    <ListGroup.Item style={{marginTop: "20px"}} key={page.id}>
                         <Link to={`${page.url}`}>{page.url.substring(1)}</Link>
-                    </li>  
-                ))
-                
-            }
+                    </ListGroup.Item>  
+                ))}
+                {role==='admin' && adminPages.map((page) => (
+                    <ListGroup.Item style={{marginTop: "20px"}} key={page.id}>
+                        <Link to={`${page.url}`}>{page.url.substring(1)}</Link>
+                    </ListGroup.Item>  
+                ))}
+                {role==='super admin' && superPages.map((page) => (
+                    <ListGroup.Item style={{marginTop: "20px"}} key={page.id}>
+                        <Link to={`${page.url}`}>{page.url.substring(1)}</Link>
+                    </ListGroup.Item>  
+                ))}
+                </ListGroup>
 
-            {role==='user' && userPages.map((page) => (
-                <li style={{marginTop: "20px"}} key={page.id}>
-                    <Link to={`${page.url}`}>{page.url.substring(1)}</Link>
-                </li>  
-            ))}
-            {role==='admin' && adminPages.map((page) => (
-                <li style={{marginTop: "20px"}} key={page.id}>
-                    <Link to={`${page.url}`}>{page.url.substring(1)}</Link>
-                </li>  
-            ))}
-            {role==='super admin' && superPages.map((page) => (
-                <li style={{marginTop: "20px"}} key={page.id}>
-                    <Link to={`${page.url}`}>{page.url.substring(1)}</Link>
-                </li>  
-            ))}
-            </ul>
-
-        </div>
+            </div>
+        </Container>
     );
 }
  

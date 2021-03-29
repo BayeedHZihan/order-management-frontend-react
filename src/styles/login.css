@@ -1,12 +1,9 @@
 .top{
-    margin-top : 40px;
+    margin : 2% 2%;
     border: grey solid 2px;
-    padding: 100px;
+    padding: 5%;
     background-color:mediumpurple;
-}
-
-label{
-    margin-left: 0;
+    border-radius: 5px;
 }
 
 h2{

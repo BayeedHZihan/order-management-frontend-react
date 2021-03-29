@@ -4,6 +4,12 @@ import { Redirect } from 'react-router';
 import {getUsers} from '../../redux/getUsersSlice';
 import {useHistory} from 'react-router-dom';
 
+import ListGroup from 'react-bootstrap/ListGroup';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
+
 const axios = require('axios');
 
 const Users = () => {
@@ -36,19 +42,26 @@ const Users = () => {
     }
 
     return (  
-        <div className="users">
-            <h2> Users List </h2>
-            {users.map((ele) => (
-                <div className="indv-user" key={ele._id}>
-                    <h4>User Name: {ele.name}</h4>
-                    <p>email : {ele.email}</p>
-                    <p>password : {ele.password}</p>
-                    <p>role : {ele.role}</p>
-                    <button onClick={() => handleUpdate(ele._id)}>update</button>
-                    <button onClick={() => handleDelete(ele._id)}>delete</button>
-                </div>
-            ))}
-        </div>
+        <Container>
+            <div className="users mt-4 mb-2">
+                <h2> Users List </h2>
+                <ListGroup>
+                    {users.map((ele) => (
+                        
+                        <Card className="mb-3" bg="info">
+                            <div className="indv-user pt-3 pb-3" key={ele._id}>
+                                <Card.Subtitle>User Name: {ele.name}</Card.Subtitle>
+                                <Card.Text>email : {ele.email}</Card.Text>
+                                <Card.Text>role : {ele.role}</Card.Text>
+                                <Button onClick={() => handleUpdate(ele._id)} variant="outline-warning" size="sm">update</Button>{' '}
+                                <Button onClick={() => handleDelete(ele._id)} variant="outline-danger" size="sm">delete</Button>
+                            </div>
+                        </Card>
+                        
+                    ))}
+                </ListGroup>
+            </div>
+        </Container>
     );
 }
  
