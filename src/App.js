@@ -1,5 +1,5 @@
 import './App.css';
-import {Switch, Route, Link} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 import Navbar from './components/AppNavbar';
 import Login from './components/Login';
@@ -15,7 +15,6 @@ import UpdateStatus from './components/orders/UpdateStatus';
 import Home from './components/Home';
 import PrivateRoute from './components/PrivateRoute';
 
-import Test from './components/Test';
 
 function App() {
   return (
@@ -52,12 +51,8 @@ function App() {
         <Route path="/place-order">
           <PlaceOrder/>
         </Route>
-        {/* <Route path="/">
-          <Home/>
-        </Route> */}
         <PrivateRoute path='/' component={Home}/>
         
-        {/* <Test/> */}
       </Switch>
     </div>
   );

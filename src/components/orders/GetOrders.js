@@ -32,8 +32,8 @@ const GetOrders = () => {
                 <ListGroup>
                     {
                         orders.map((order) => (
-                            <Card className="mb-3" bg="info">
-                                <div key={order._id} className= "pt-3 pb-3">
+                            <Card className="mb-3" key={order._id} bg="info">
+                                <div className= "pt-3 pb-3">
                                     <Card.Subtitle>Title : {order.title}</Card.Subtitle>
                                     <p>items : {order.items}</p>
                                     {order.description && <p>description: {order.description}</p>}

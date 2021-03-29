@@ -1,16 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {getProducts} from '../../redux/getProductsSlice';
 
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 const GetProducts = () => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.products.list);
-    //console.log("the products are :", data);
 
     useEffect(() => {
         dispatch(getProducts());
@@ -22,8 +20,8 @@ const GetProducts = () => {
                 <h2> Products List </h2>
                 <ListGroup>
                     {data && data.map((product) => (
-                        <Card className="mb-3" bg="info">
-                            <div key={product._id} className= "pt-3 pb-3">
+                        <Card className="mb-3" bg="info"  key={product._id}>
+                            <div className= "pt-3 pb-3">
                                 
                                 <Card.Subtitle>Title : {product.title}</Card.Subtitle>
                                 <Card.Text>price : {product.price}</Card.Text>

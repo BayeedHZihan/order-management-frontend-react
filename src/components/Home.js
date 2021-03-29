@@ -1,28 +1,26 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
 import '../styles/Home.css';
 
 const Home = () => {
-    // different states for different users
-    // if allstate || rightState then ouput route in the list
 
-    const [pages, setPages] = useState([
+    const [pages] = useState([
         {url: '/create-user', id: 0},
         {url: '/get-users', id: 2}
     ]);
 
-    const [userPages, setUserPages] = useState([
+    const [userPages] = useState([
         {url: '/get-products', id: 3},
         {url: '/place-order', id: 4}
     ]);
-    const [adminPages, setAdminPages] = useState([
+    const [adminPages] = useState([
         {url: '/get-orders', id: 5}
     ]);
-    const [superPages, setSuperPages] = useState([
+    const [superPages] = useState([
         {url: '/create-product', id: 7},
         {url: '/order-summary', id: 8}
     ]);

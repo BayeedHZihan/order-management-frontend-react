@@ -1,6 +1,5 @@
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { Redirect } from 'react-router';
 import {getUsers} from '../../redux/getUsersSlice';
 import {useHistory} from 'react-router-dom';
 
@@ -16,7 +15,6 @@ const Users = () => {
     const dispatch = useDispatch();
     const users = useSelector(state => state.users.list);
 
-    const [deleteRefresher, setdeleteRefresher] = useState(0);
 
     useEffect(() => {
         dispatch(getUsers());
@@ -48,8 +46,8 @@ const Users = () => {
                 <ListGroup>
                     {users.map((ele) => (
                         
-                        <Card className="mb-3" bg="info">
-                            <div className="indv-user pt-3 pb-3" key={ele._id}>
+                        <Card className="mb-3" bg="info" key={ele._id}>
+                            <div className="indv-user pt-3 pb-3">
                                 <Card.Subtitle>User Name: {ele.name}</Card.Subtitle>
                                 <Card.Text>email : {ele.email}</Card.Text>
                                 <Card.Text>role : {ele.role}</Card.Text>

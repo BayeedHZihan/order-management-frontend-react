@@ -1,7 +1,6 @@
 import {useState} from 'react';
 
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 
 const axios = require('axios');
 
@@ -25,13 +24,13 @@ const CreateUser = () => {
                 <h2> Create User </h2>
                 <form>
                     <label> UserName </label><br/>
-                    <input type="text" id="username" required onChange={(e) => setName(e.target.value)} placeholder="Enter name"/><br/>
+                    <input type="text" id="username" onChange={(e) => setName(e.target.value)} placeholder="Enter name" required/><br/><br/>
                     <label> Email </label><br/>
-                    <input type="email" id="useremail" required onChange={(e) => setEmail(e.target.value)} placeholder="Email"/><br/>
+                    <input type="email" id="useremail" required onChange={(e) => setEmail(e.target.value)} placeholder="Email"/><br/><br/>
                     <label> Password </label><br/>
-                    <input type="password" id="userpwd" minLength="3" required onChange={(e) => setPassword(e.target.value)} placeholder="Password"/><br/>
+                    <input type="password" id="userpwd" minLength="3" required onChange={(e) => setPassword(e.target.value)} placeholder="Password"/><br/><br/>
                     <label> Role </label><br/>
-                    <input type="text" id="role" required onChange={(e) => setRole(e.target.value)} placeholder="Role"/><br/>
+                    <input type="text" id="role" required onChange={(e) => setRole(e.target.value)} placeholder="Role"/><br/><br/>
                     <input type="submit" value="Submit" onClick={handleClick}/>
                 </form>
             </div>
