@@ -20,9 +20,7 @@ import Test from './components/Test';
 function App() {
   return (
     <div className="App">
-      {/* <h2> Order Management </h2> */}
       <Navbar /> 
-      {/* <Link to="/">Home</Link> */}
       <Switch>
         <Route path="/login">
           <Login/>

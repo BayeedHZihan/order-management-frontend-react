@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 
+import Container from 'react-bootstrap/Container';
+
 const axios = require('axios');
 
 const UpdateStatus = (props) => {
@@ -29,19 +31,21 @@ const UpdateStatus = (props) => {
     }
 
     return (  
-        <div> 
-            <h2> Update Order Status </h2>
-            <form>
-                <label>Change status to: </label>
-                <select name="status" id="order-status" onChange={handleChange}>
-                    <option value="pending">Pending</option>
-                    <option value="accepted">Accepted</option>
-                    <option value="delivered">Delivered</option>
-                </select>
-                <br/><br/>
-                <input type="submit" value="Submit" onClick={handleClick}/>
-            </form>
-        </div>
+        <Container>
+            <div className="top"> 
+                <h2> Update Order Status </h2>
+                <form className="mt-5">
+                    <label className="mr-3">Change status to: </label>
+                    <select name="status" id="order-status" onChange={handleChange}>
+                        <option value="pending">Pending</option>
+                        <option value="accepted">Accepted</option>
+                        <option value="delivered">Delivered</option>
+                    </select>
+                    <br/><br/>
+                    <input type="submit" value="Submit" onClick={handleClick}/>
+                </form>
+            </div>
+        </Container>
     );
 }
  

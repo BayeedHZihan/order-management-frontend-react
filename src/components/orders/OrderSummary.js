@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+
 const OrderSummary = () => {
     const [summary, setSummary] = useState(0);
 
@@ -9,11 +12,13 @@ const OrderSummary = () => {
             .then((res) => setSummary(res.data))
     }
     return (  
-        <div>
-            <button onClick={handleClick}> get summary </button>
-            <p>The number of orders made in the last day : {summary}</p>
-        </div>
+        <Container>
+            <div className="top">
+                <Button onClick={handleClick} className="mb-5" variant="info"> get summary </Button>
+                <h3>The number of orders made in the last day:  {summary}</h3>
+            </div>
+        </Container>
     );
-}
+} 
  
 export default OrderSummary;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
+import Container from 'react-bootstrap/Container';
+
 const axios = require('axios');
 
 const UpdateUser = (props) => {
@@ -28,20 +30,22 @@ const UpdateUser = (props) => {
     }
 
     return (  
-        <div>
-            <h2> Update User </h2>
-            <form>
-                <label> UserName </label><br/>
-                <input type="text" id="update-name" onChange={(e) => setName(e.target.value)}/><br/>
-                <label> Email </label><br/>
-                <input type="email" id="update-email" onChange={(e) => setEmail(e.target.value)}/><br/>
-                <label> Password </label><br/>
-                <input type="password" id="update-pwd" minLength="3" onChange={(e) => setPassword(e.target.value)}/><br/>
-                <label> Role </label><br/>
-                <input type="text" id="update-role" onChange={(e) => setRole(e.target.value)}/><br/>
-                <input type="submit" value="Submit" onClick={handleClick}/>
-            </form>
-        </div>
+        <Container>
+            <div className="top">
+                <h2> Update User </h2>
+                <form>
+                    <label> UserName </label><br/>
+                    <input type="text" id="update-name" onChange={(e) => setName(e.target.value)}/><br/>
+                    <label> Email </label><br/>
+                    <input type="email" id="update-email" onChange={(e) => setEmail(e.target.value)}/><br/>
+                    <label> Password </label><br/>
+                    <input type="password" id="update-pwd" minLength="3" onChange={(e) => setPassword(e.target.value)}/><br/>
+                    <label> Role </label><br/>
+                    <input type="text" id="update-role" onChange={(e) => setRole(e.target.value)}/><br/>
+                    <input type="submit" value="Submit" onClick={handleClick}/>
+                </form>
+            </div>
+        </Container>
     );
 }
  
