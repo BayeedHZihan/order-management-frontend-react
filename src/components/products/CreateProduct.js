@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -13,6 +14,8 @@ const CreateProduct = () => {
     const [category, setCategory] = useState();
     const [image, setImage] = useState();
 
+    let history = useHistory();
+
     const handleCreate = e => {
         e.preventDefault();
         const userToCreate = {title, price};
@@ -20,6 +23,7 @@ const CreateProduct = () => {
         if (category) userToCreate.category = category;
         if (image) userToCreate.image = image;
         axios.post('http://localhost:5000/products', userToCreate)
+            .then(() => history.push("/"))
     }
 
     const handleGen = e => {

@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 
@@ -9,11 +10,14 @@ const PlaceOrder = () => {
     const [items, setItems] = useState();
     const [description, setDescription] = useState();
 
+    let history = useHistory();
+
     const handleClick = (e) => {
         e.preventDefault();
         const orderToPlace = {title, items};
         if (description) orderToPlace.description = description;
         axios.post('http://localhost:5000/orders/place-order', orderToPlace, {withCredentials: true})
+            .then(() => history.push("/"))
     }
 
     return (  

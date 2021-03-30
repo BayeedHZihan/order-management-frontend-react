@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import {useHistory} from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 
@@ -17,6 +18,8 @@ const UpdateUser = (props) => {
        setUserId(location.state.id);
     }, [location]);
 
+    let history = useHistory();
+
     const handleClick = (e) => {
         e.preventDefault();
         const userUpdate = {};
@@ -26,6 +29,7 @@ const UpdateUser = (props) => {
         if (role) userUpdate.role = role;
         if (userId) {
             axios.patch(`http://localhost:5000/users/${userId}`, userUpdate)
+                .then(() => history.push("/get-users"))
         }
     }
 

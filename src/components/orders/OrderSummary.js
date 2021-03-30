@@ -15,7 +15,7 @@ const OrderSummary = () => {
         <Container>
             <div className="top">
                 <Button onClick={handleClick} className="mb-5" variant="info"> get summary </Button>
-                <h3>The number of orders made in the last day:  {summary}</h3>
+                <h3>The number of orders made in the last day:  <span className="text-warning">{summary}</span></h3>
             </div>
         </Container>
     );

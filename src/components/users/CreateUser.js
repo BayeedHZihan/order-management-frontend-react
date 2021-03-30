@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 
@@ -11,11 +12,13 @@ const CreateUser = () => {
     const [password, setPassword] = useState("");
     const [role, setRole] = useState("");
 
+    let history = useHistory();
+
     const handleClick = (e) => {
         e.preventDefault();
         axios.post('http://localhost:5000/users', {
             name, email, password, role
-        })
+        }).then(() => history.push("/get-users"))
     }
 
     return ( 
