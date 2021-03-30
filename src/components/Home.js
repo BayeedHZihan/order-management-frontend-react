@@ -27,7 +27,6 @@ const Home = () => {
     
 
     const role = useSelector(state => state.isLoggedIn.userRole);
-    //console.log(role);
 
 
     return (  
@@ -36,7 +35,7 @@ const Home = () => {
                 <h2>List of pages you can access</h2> 
                 <ListGroup  variant="flush" className="linkTexts">
                 {
-                    
+                    (role==='admin' || role==="super admin") &&
                     pages.map((page) => (
                         <ListGroup.Item style={{marginTop: "20px"}} key={page.id}>
                             <Link to={`${page.url}`}>{page.url.substring(1)}</Link>

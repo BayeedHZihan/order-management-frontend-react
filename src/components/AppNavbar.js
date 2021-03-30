@@ -1,5 +1,5 @@
-
 import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 import {Link} from 'react-router-dom';
 import '../styles/AppNavbar.css';
 import logo from '../assets/logo.png'
@@ -19,6 +19,9 @@ const AppNavbar = () => {
                     Order Management
                 </Link>
             </Navbar.Brand>
+            <Nav className="ml-auto">
+                <Link to="/get-products"><p className="navLink mt-3">Products</p></Link>
+            </Nav>
         </Navbar>
     );
 }

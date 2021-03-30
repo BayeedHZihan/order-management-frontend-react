@@ -6,3 +6,7 @@
 .navTitle:hover{
     text-decoration: none;
 }
+
+.navLink{
+    color:mediumturquoise;
+}
