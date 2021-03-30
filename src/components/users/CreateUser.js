@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 import Container from 'react-bootstrap/Container';
 
@@ -13,9 +14,16 @@ const CreateUser = () => {
     const [role, setRole] = useState("");
 
     let history = useHistory();
+    const loginRole = useSelector(state => state.isLoggedIn.userRole);
 
     const handleClick = (e) => {
         e.preventDefault();
+        
+        if (role === "admin" && loginRole !== "super admin") {
+            history.push("/");
+            return;
+        }
+
         axios.post('http://localhost:5000/users', {
             name, email, password, role
         }).then(() => history.push("/get-users"))
