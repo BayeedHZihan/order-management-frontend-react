@@ -21,7 +21,7 @@ const GetProducts = () => {
                 <ListGroup>
                     {data && data.map((product) => (
                         <Card className="mb-3" bg="info"  key={product._id}>
-                            <div className= "pt-3 pb-3">
+                            <div className= "pt-3 pb-3 ml-4">
                                 
                                 <Card.Subtitle>Title : {product.title}</Card.Subtitle>
                                 <Card.Text>price : {product.price}</Card.Text>

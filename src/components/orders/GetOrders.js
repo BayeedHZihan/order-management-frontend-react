@@ -33,7 +33,7 @@ const GetOrders = () => {
                     {
                         orders.map((order) => (
                             <Card className="mb-3" key={order._id} bg="info">
-                                <div className= "pt-3 pb-3">
+                                <div className= "pt-3 pb-3 ml-4">
                                     <Card.Subtitle>Title : {order.title}</Card.Subtitle>
                                     <p>items : {order.items}</p>
                                     {order.description && <p>description: {order.description}</p>}

@@ -47,7 +47,7 @@ const Users = () => {
                     {users.map((ele) => (
                         
                         <Card className="mb-3" bg="info" key={ele._id}>
-                            <div className="indv-user pt-3 pb-3">
+                            <div className="indv-user pt-3 pb-3 ml-4">
                                 <Card.Subtitle>User Name: {ele.name}</Card.Subtitle>
                                 <Card.Text>email : {ele.email}</Card.Text>
                                 <Card.Text>role : {ele.role}</Card.Text>
