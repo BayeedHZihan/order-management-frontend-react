@@ -33,9 +33,9 @@ const Login = () => {
         setEmailError();
         setPasswordError();
         if (!email || !email.includes("@") || !email.includes(".com"))
-            setEmailError("Invalid Email!");
+            setEmailError("* Invalid Email!");
         if (!password || password.length < 3) 
-            setPasswordError("Password must be atleast 3 chars!");
+            setPasswordError("* Password must be atleast 3 chars!");
         if (emailErrorRef.current || pwErrorRef.current)
             return false;
         
@@ -63,7 +63,7 @@ const Login = () => {
                 }
             }
             catch (err) {   
-                setGenericError("Incorrect Email or Password!!!");
+                setGenericError("* Incorrect Email or Password!!!");
             }
         }
     }

@@ -28,13 +28,13 @@ const CreateUser = () => {
         setPasswordError();
         setRoleError();
         if (!name) 
-            setNameError("Name can not be empty!");
+            setNameError("* Name can not be empty!");
         if (!email || !email.includes("@") || !email.includes(".com"))
-            setEmailError("Invalid Email!");
+            setEmailError("* Invalid Email!");
         if (!password || password.length < 3) 
-            setPasswordError("Password must be atleast 3 chars!");
+            setPasswordError("* Password must be atleast 3 chars!");
         if (!role)
-            setRoleError("Enter a role.");
+            setRoleError("* Enter a role.");
         if (nameErrorRef.current || emailErrorRef.current || passwordErrorRef.current || roleErrorRef.current)
             return false;
         
@@ -47,7 +47,7 @@ const CreateUser = () => {
         if (validate()){
             try{
                 if (role === "admin" && loginRole !== "super admin") {
-                    
+                    //failed toast
                     history.push("/");
                     return;
                 }
@@ -55,10 +55,10 @@ const CreateUser = () => {
                 axios.post('http://localhost:5000/users', {
                     name, email, password, role
                 }).then(() => history.push("/get-users"))
-                    .catch(e => setGenericError("One or more invalid fields!!!"))
+                    .catch(e => setGenericError("* One or more invalid fields!!!"))
             }
             catch(e){
-                setGenericError("OOPS!!! Something went wrong!");
+                setGenericError("* OOPS!!! Something went wrong!");
             }
         }
         

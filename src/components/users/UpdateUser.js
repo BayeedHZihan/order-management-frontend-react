@@ -14,22 +14,40 @@ const UpdateUser = (props) => {
     const [password, setPassword] = useState("");
     const [role, setRole] = useState("");
 
+    const [genericError, setGenericError] = useState();
+
     useEffect(() => {
        setUserId(location.state.id);
     }, [location]);
 
     let history = useHistory();
 
+    const validate = () => {
+        if (!name && !email && !password && !role){
+            setGenericError("* Fill in atleast one field to update.");
+            return false;
+        }
+        return true;
+    }
+
     const handleClick = (e) => {
         e.preventDefault();
-        const userUpdate = {};
-        if (name) userUpdate.name = name;
-        if (email) userUpdate.email = email;
-        if (password) userUpdate.password = password;
-        if (role) userUpdate.role = role;
-        if (userId) {
-            axios.patch(`http://localhost:5000/users/${userId}`, userUpdate)
-                .then(() => history.push("/get-users"))
+        if (validate()){
+            try{  
+                const userUpdate = {};
+                if (name) userUpdate.name = name;
+                if (email) userUpdate.email = email;
+                if (password) userUpdate.password = password;
+                if (role) userUpdate.role = role;
+                if (userId) {
+                    axios.patch(`http://localhost:5000/users/${userId}`, userUpdate)
+                        .then(() => history.push("/get-users"))
+                        .catch(e => setGenericError("One or more invalid fields!!!"))
+                }
+            }
+            catch(e){
+                setGenericError("OOPS!!! Something went wrong!");
+            }
         }
     }
 
@@ -38,6 +56,7 @@ const UpdateUser = (props) => {
             <div className="top">
                 <h2> Update User </h2>
                 <form>
+                    <div className="text-danger">{genericError}</div><br/>
                     <label> UserName </label><br/>
                     <input type="text" id="update-name" onChange={(e) => setName(e.target.value)}/><br/>
                     <label> Email </label><br/>
