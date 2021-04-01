@@ -46,6 +46,7 @@ const Users = () => {
                 <ListGroup>
                     {users.map((ele) => (
                         
+                        ele.role !== "super admin" &&
                         <Card className="mb-3" bg="info" key={ele._id}>
                             <div className="indv-user pt-3 pb-3 ml-4">
                                 <Card.Subtitle>User Name: {ele.name}</Card.Subtitle>
@@ -55,6 +56,7 @@ const Users = () => {
                                 <Button onClick={() => handleDelete(ele._id)} variant="outline-danger" size="sm">delete</Button>
                             </div>
                         </Card>
+                        
                         
                     ))}
                 </ListGroup>
