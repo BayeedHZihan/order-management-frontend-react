@@ -15,6 +15,9 @@ const UpdateUser = (props) => {
     const [role, setRole] = useState("");
 
     const [genericError, setGenericError] = useState();
+    const [emailError, setEmailError] = useState();
+    const [passwordError, setPasswordError] = useState();
+    const [roleError, setRoleError] = useState();
 
     useEffect(() => {
        setUserId(location.state.id);
@@ -25,6 +28,18 @@ const UpdateUser = (props) => {
     const validate = () => {
         if (!name && !email && !password && !role){
             setGenericError("* Fill in atleast one field to update.");
+            return false;
+        }
+        if (email && (!email.includes("@") || !email.includes(".com"))){
+            setEmailError("* Not a valid email!");
+            return false;
+        }
+        if (password && password.length < 3) {
+            setPasswordError("* Password should be atleast 3 chars!");
+            return false;
+        }
+        if (role && (role!=="user" && role!=="admin")){
+            setRoleError("* Not a valid role!");
             return false;
         }
         return true;
@@ -57,14 +72,25 @@ const UpdateUser = (props) => {
                 <h2> Update User </h2>
                 <form>
                     <div className="text-danger">{genericError}</div><br/>
+
                     <label> UserName </label><br/>
-                    <input type="text" id="update-name" onChange={(e) => setName(e.target.value)}/><br/>
+                    <input type="text" id="update-name" onChange={(e) => setName(e.target.value)}/>
+                    <br/>
+
                     <label> Email </label><br/>
-                    <input type="email" id="update-email" onChange={(e) => setEmail(e.target.value)}/><br/>
+                    <input type="email" id="update-email" onChange={(e) => setEmail(e.target.value)}/>
+                    <div className="text-danger">{emailError}</div>
+                    <br/>
+
                     <label> Password </label><br/>
-                    <input type="password" id="update-pwd" minLength="3" onChange={(e) => setPassword(e.target.value)}/><br/>
+                    <input type="password" id="update-pwd" minLength="3" onChange={(e) => setPassword(e.target.value)}/>
+                    <div className="text-danger">{passwordError}</div>
+                    <br/>
                     <label> Role </label><br/>
-                    <input type="text" id="update-role" onChange={(e) => setRole(e.target.value)}/><br/>
+                    <input type="text" id="update-role" onChange={(e) => setRole(e.target.value)}/>
+                    <div className="text-danger">{roleError}</div>
+                    <br/>
+                    
                     <input type="submit" value="Submit" onClick={handleClick}/>
                 </form>
             </div>
