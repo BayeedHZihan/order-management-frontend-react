@@ -1,5 +1,6 @@
 import './App.css';
 import {Switch, Route} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 import Navbar from './components/AppNavbar';
 import Login from './components/Login';
@@ -14,16 +15,22 @@ import PlaceOrder from './components/orders/PlaceOrder';
 import UpdateStatus from './components/orders/UpdateStatus';
 import Home from './components/Home';
 import PrivateRoute from './components/PrivateRoute';
+import Cart from './components/Cart';
 
 
 function App() {
+  const isLoggedIn = useSelector(state => state.isLoggedIn.value);
+
   return (
     <div className="App">
       <Navbar /> 
       <Switch>
-        <Route path="/login">
-          <Login/>
-        </Route>
+        {
+          !isLoggedIn && 
+          <Route path="/login">
+            <Login/>
+          </Route>
+        }
         <Route path="/create-user">
           <CreateUser />
         </Route>
@@ -50,6 +57,9 @@ function App() {
         </Route>
         <Route path="/place-order">
           <PlaceOrder/>
+        </Route>
+        <Route path="/go-to-cart">
+          <Cart/>
         </Route>
         <PrivateRoute path='/' component={Home}/>
         

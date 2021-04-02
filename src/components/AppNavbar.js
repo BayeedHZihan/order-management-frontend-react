@@ -21,6 +21,7 @@ const AppNavbar = () => {
             </Navbar.Brand>
             <Nav className="ml-auto">
                 <Link to="/get-products"><p className="navLink mt-3">Products</p></Link>
+                <Link to="/go-to-cart"><p className="navLink mt-3 ml-3">Cart</p></Link>
             </Nav>
         </Navbar>
     );
