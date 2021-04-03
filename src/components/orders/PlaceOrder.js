@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
 
 import Container from 'react-bootstrap/Container';
 
@@ -19,6 +20,8 @@ const PlaceOrder = () => {
         axios.post('http://localhost:5000/orders/place-order', orderToPlace, {withCredentials: true})
             .then(() => history.push("/"))
     }
+
+    const products = useSelector(state => state.cart.list);
 
     return (  
         <Container>

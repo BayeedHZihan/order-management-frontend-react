@@ -25,12 +25,9 @@ function App() {
     <div className="App">
       <Navbar /> 
       <Switch>
-        {
-          !isLoggedIn && 
-          <Route path="/login">
-            <Login/>
-          </Route>
-        }
+        <Route path="/login">
+          <Login/>
+        </Route>
         <Route path="/create-user">
           <CreateUser />
         </Route>
@@ -58,6 +55,7 @@ function App() {
         <Route path="/place-order">
           <PlaceOrder/>
         </Route>
+        {/* <PrivateRoute path='/place-order' component={PlaceOrder}/> */}
         <Route path="/go-to-cart">
           <Cart/>
         </Route>

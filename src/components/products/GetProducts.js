@@ -12,8 +12,6 @@ const GetProducts = () => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.products.list);
 
-    const [cart, setCart] = useState([]);
-
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch]);
