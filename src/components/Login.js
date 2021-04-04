@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import axios from 'axios';
-import {useHistory} from 'react-router-dom';
+import {useHistory, useLocation} from 'react-router-dom';
 import {login} from '../redux/authSlice';
 import jwt_decode from "jwt-decode";
 import {useDispatch, useSelector} from 'react-redux';
@@ -12,8 +12,11 @@ import Form from 'react-bootstrap/Form';
 
 import '../styles/login.css';
 
-const Login = () => {
+const Login = (props) => {
     let history = useHistory();
+
+    const location = useLocation();
+    //console.log("login props:", location.state.comp);
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -59,7 +62,8 @@ const Login = () => {
                     }
 
                     dispatch(login(ref.current));
-                    history.push("/");
+                    //history.push("/");
+                    location.state.comp ? history.push(location.state.comp) : history.push("/");
                 }
             }
             catch (err) {   

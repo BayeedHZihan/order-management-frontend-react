@@ -52,10 +52,10 @@ function App() {
         <Route path="/order-summary">
           <OrderSummary/>  
         </Route>
-        <Route path="/place-order">
+        {/* <Route path="/place-order">
           <PlaceOrder/>
-        </Route>
-        {/* <PrivateRoute path='/place-order' component={PlaceOrder}/> */}
+        </Route> */}
+        <PrivateRoute path='/place-order' component={PlaceOrder} name="/place-order"/>
         <Route path="/go-to-cart">
           <Cart/>
         </Route>
