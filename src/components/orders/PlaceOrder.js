@@ -1,9 +1,11 @@
 import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
+import {emptyCart} from '../../redux/cartSlice';
 
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 const axios = require('axios');
 
@@ -12,6 +14,7 @@ const PlaceOrder = () => {
     const totalPrice = useSelector(state => state.cart.totalPrice);
 
     let history = useHistory();
+    const dispatch = useDispatch();
 
     const handleCheckout = () => {
         products.map(item => {
@@ -20,16 +23,28 @@ const PlaceOrder = () => {
                 items: item.amount
             }
             axios.post('http://localhost:5000/orders/place-order', orderToPlace, {withCredentials: true})
-                .then(() => history.push("/"))
                 .catch(e => console.log(e))
         })
+        dispatch(emptyCart());
+        history.push("/");
     }
 
     return (
         <Container>
             <div className="mt-5">
-            {products.length>0 && <h4>Total: ${(Math.round(totalPrice * 100) / 100).toFixed(2)}</h4>} <br/>
-            <Button variant="info" onClick={handleCheckout}>Checkout</Button>
+                {products && products.map((product) => (
+                    <Card className="mb-3"  key={product.product._id}>
+                        <div className= "pt-3 pb-3 ml-4">
+                            {product.product.image && <img src={product.product.image} alt="new" width="150" height="150"/>}<br/><br/>
+                            <Card.Title>{product.product.title}</Card.Title>
+                            <span className="mr-5">Price: ${product.product.price}</span>
+                            <span>Total: ${product.product.price * product.amount}</span>
+                        </div>
+                    </Card>
+                ))}
+                {products.length>0 && <h4>Total: ${(Math.round(totalPrice * 100) / 100).toFixed(2)}</h4>} <br/>
+                {products.length>0 && <Button variant="info" onClick={handleCheckout}>Checkout</Button>}
+                {products.length===0 && <h4 className="text-primary">No Order To Place ...</h4>}<br/><br/><br/>
             </div>
         </Container>
     )

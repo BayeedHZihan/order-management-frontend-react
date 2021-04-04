@@ -38,10 +38,15 @@ export const cartSlice = createSlice({
             }
             state.list = currentList;
             state.totalPrice -= action.payload.price
+        },
+        emptyCart: (state, action) => {
+            //state.list = []
+            state.list.length = 0
+            state.totalPrice = 0
         }
     }
 })
 
-export const {addToCart, removeFromCart} = cartSlice.actions
+export const {addToCart, removeFromCart, emptyCart} = cartSlice.actions
 
 export default cartSlice.reducer

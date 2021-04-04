@@ -48,9 +48,10 @@ const Cart = () => {
                             </div>
                         </Card>
                     ))}
+                    {products.length===0 && <h4 className="text-primary">There are no products in the cart ...</h4>}
                     {products.length>0 && <h4>Total: ${(Math.round(totalPrice * 100) / 100).toFixed(2)}</h4>}
                     {products.length>0 && <Button variant="info" onClick={handlePlaceOrder}>Place Order</Button>}<br/><br/><br/>
-                    {products.length===0 && <h4 className="text-info">There are no products in the cart ...</h4>}
+                    
                 </ListGroup>
                 
             </div>
