@@ -9,6 +9,9 @@ const axios = require('axios');
 
 const PlaceOrder = () => {
     const products = useSelector(state => state.cart.list);
+    const totalPrice = useSelector(state => state.cart.totalPrice);
+
+    let history = useHistory();
 
     const handleCheckout = () => {
         products.map(item => {
@@ -17,13 +20,17 @@ const PlaceOrder = () => {
                 items: item.amount
             }
             axios.post('http://localhost:5000/orders/place-order', orderToPlace, {withCredentials: true})
+                .then(() => history.push("/"))
                 .catch(e => console.log(e))
         })
     }
 
     return (
         <Container>
-            <Button variant="info" className="mt-5" onClick={handleCheckout}>Checkout</Button>
+            <div className="mt-5">
+            {products.length>0 && <h4>Total: ${(Math.round(totalPrice * 100) / 100).toFixed(2)}</h4>} <br/>
+            <Button variant="info" onClick={handleCheckout}>Checkout</Button>
+            </div>
         </Container>
     )
 }
