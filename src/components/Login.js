@@ -16,7 +16,6 @@ const Login = (props) => {
     let history = useHistory();
 
     const location = useLocation();
-    //console.log("login props:", location.state.comp);
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
