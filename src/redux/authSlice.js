@@ -13,6 +13,7 @@ export const authSlice = createSlice({
     },
     logout: state => {
       state.value = false
+      state.userRole = ""
     }
   }
 })

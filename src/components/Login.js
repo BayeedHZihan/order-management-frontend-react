@@ -62,10 +62,11 @@ const Login = (props) => {
 
                     dispatch(login(ref.current));
                     //history.push("/");
-                    location.state.comp ? history.push(location.state.comp) : history.push("/");
+                    location.state?.comp ? history.push(location.state.comp) : history.push("/");
                 }
             }
             catch (err) {   
+                console.log(err)
                 setGenericError("* Incorrect Email or Password!!!");
             }
         }
