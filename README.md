@@ -1,6 +1,6 @@
 # Project Description
 
-E-commerce ish website for user, order, product management with authentication and authorization. 
+E-commerce website for user, order, product management with authentication and authorization. 
 Renders data from Express.js, MongoDB backend.
 
 3 levels of authorization - normal User, Admin, Super Admin. 
@@ -20,10 +20,6 @@ React, Redux-toolkit, Redux-persist, React-bootstrap etc.
 ## Find the Backend here
 https://github.com/BayeedHZihan/order-management
 
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
